@@ -1,0 +1,23 @@
+# EC-state labels and contact sample ranges are provided segment annotations.
+schema_version: 1
+task: LfDEC-Door-EC-Franka
+start: grasp
+segments:
+  grasp:
+    state: free
+    demo: door_approach.npz
+    cfg:
+      max_approach: 0.0
+  open:
+    state: revolute
+    cfg:
+      terminate_extra:
+      - cabinet/door_left_joint
+      - -0.436
+    demo: door_turn.npz
+edges:
+- node: grasp
+  successor: open
+  event: NonC
+execution:
+  max_iters: 200

@@ -1,0 +1,33 @@
+# Recorded by scripts/record_grasp_ec_demo.py; EC labels and sample ranges are provided annotations.
+schema_version: 1
+task: LfDEC-Grasp-Free-Franka
+start: grasp
+segments:
+  grasp:
+    state: free
+    demo: block_grasp.npz
+    cfg:
+      max_approach: 0.0
+      waypoint_tol: 0.001
+      waypoint_rot_tol: 0.01
+      grip_settle: 1.2
+    servo:
+      tol: 0.001
+      rot_tol: 0.005
+  lift:
+    state: free
+    demo: block_lift.npz
+    cfg:
+      max_approach: 0.0
+      waypoint_tol: 0.008
+      waypoint_rot_tol: 0.02
+edges:
+- node: grasp
+  successor: lift
+  event: NonC
+execution:
+  max_iters: 200
+  hand_dx: 0.02
+  hand_dy: -0.02
+  hand_dz: 0.03
+  hand_dyaw_deg: 5.0

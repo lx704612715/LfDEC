@@ -1,0 +1,32 @@
+# Generated from demonstration segments; see the companion learning report.
+schema_version: 1
+task: LfDEC-Drawer-EC-Franka
+start: grasp
+primitives:
+  grasp:
+    type: freespace
+    demo: drawer_approach.npz
+    cfg:
+      max_approach: 0.0
+  pull:
+    type: translation
+    demo: drawer_pull.npz
+    ec:
+      axis:
+      - -0.999984464682529
+      - 0.0050925901068005685
+      - -0.0022662567374819604
+    cfg:
+      delta_p: 0.1
+      terminate_extra:
+      - cabinet/drawer_top_joint
+      - 0.2
+edges:
+- node: grasp
+  successor: pull
+  event: NonC
+learning:
+  manifest: drawer_grasp_pull.demo.yaml
+  report: drawer_grasp_pull.learning.json
+execution:
+  max_iters: 200

@@ -1,0 +1,42 @@
+# Generated from demonstration segments; see the companion learning report.
+schema_version: 1
+task: LfDEC-Factory-Nut-Thread-Franka
+start: thread
+primitives:
+  thread:
+    type: rotation
+    demo: nut_thread.npz
+    ec:
+      axis:
+      - 0.00394112497992553
+      - 0.013688996849511416
+      - -0.9998985343019292
+      point:
+      - 0.5544219296990776
+      - -0.0071065998354392515
+      - 0.4791262773791083
+      ekf:
+        init_axis: 0.0001
+        init_point: 1.0e-08
+        q_axis: 1.0e-07
+        q_point: 1.0e-09
+        r_trans: 1.0e-08
+        r_rot: 1.0e-05
+        pitch: 0.00036788774222692853
+    cfg:
+      period: 0.25
+      delta_theta: 0.05
+      min_rot: 0.001
+      min_tran: 1.0e-05
+      terminate_theta: 1.5707963267948966
+      early_exit_disp: 0.0
+edges: []
+learning:
+  manifest: nut_turn.demo.yaml
+  report: nut_turn.learning.json
+execution:
+  max_iters: 250
+  hand_dx: 0.0
+  hand_dy: 0.0
+  hand_dz: 0.0
+  hand_dyaw_deg: 0.0

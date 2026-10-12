@@ -1,0 +1,50 @@
+# Generated from demonstration segments; see the companion learning report.
+schema_version: 1
+task: LfDEC-Peg-Insert-Franka
+start: approach
+primitives:
+  approach:
+    type: freespace
+    demo: insert_approach.npz
+    cfg:
+      max_approach: 0.06
+  search:
+    type: plane
+    demo: insert_slide.npz
+    ec:
+      normal:
+      - 0.07983727240716788
+      - -0.11405275717695439
+      - 0.990261570755383
+    cfg:
+      press_depth: 0.015
+      spiral_radius: 0.02
+      waypoint_tol: 0.012
+      bce_depth: 0.006
+      mce_force: 10.0
+      servo_max_disp: 0.03
+      servo_time: 6.0
+    servo:
+      servo_mode: pbvs
+  insert:
+    type: translation
+    demo: insert_descent.npz
+    ec:
+      axis:
+      - 0.05562871843597771
+      - 0.12567182211093164
+      - -0.990510998834687
+    cfg:
+      delta_p: 0.03
+edges:
+- node: approach
+  successor: search
+  event: MC
+- node: search
+  successor: insert
+  event: BC
+learning:
+  manifest: peg_insert.demo.yaml
+  report: peg_insert.learning.json
+execution:
+  max_iters: 200

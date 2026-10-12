@@ -1,0 +1,24 @@
+# EC-state labels and contact sample ranges are provided segment annotations.
+schema_version: 1
+task: LfDEC-Drawer-EC-Franka
+start: grasp
+segments:
+  grasp:
+    state: free
+    demo: drawer_approach.npz
+    cfg:
+      max_approach: 0.0
+  pull:
+    state: prismatic
+    cfg:
+      delta_p: 0.1
+      terminate_extra:
+      - cabinet/drawer_top_joint
+      - 0.2
+    demo: drawer_pull.npz
+edges:
+- node: grasp
+  successor: pull
+  event: NonC
+execution:
+  max_iters: 200

@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "segmentation": "provided EC labels and contact-sample annotations",
+  "frame": "robot base",
+  "manifest_sha256": "685b55c11908ecb9acc9e5e685c477fae5bfbedfdc481a616122b524f9f8c248",
+  "segments": {
+    "grasp": {
+      "state": "free",
+      "source": "door_approach.npz",
+      "sha256": "3343bf05f174fb3ee116e926de518d94633c72d15b0378b6c9cb46465f571895",
+      "fit_samples": [
+        0,
+        6
+      ],
+      "parameters": {},
+      "diagnostics": {
+        "samples": 6
+      }
+    },
+    "open": {
+      "state": "revolute",
+      "source": "door_turn.npz",
+      "sha256": "2a8467fd3a21952add812ce61b131b0403de151b14f05f2d751fbad8a32a2d3e",
+      "fit_samples": [
+        0,
+        11
+      ],
+      "parameters": {
+        "axis": [
+          -0.001656654535584529,
+          -0.004764356732938907,
+          -0.9999872781194125
+        ],
+        "point": [
+          0.47832075237827115,
+          0.36466665423234934,
+          0.4504238934209327
+        ],
+        "pitch": 0.0
+      },
+      "diagnostics": {
+        "samples": 11,
+        "radius_m": 0.33651033555462423,
+        "position_rmse_m": 8.658074815299846e-05
+      }
+    }
+  }
+}

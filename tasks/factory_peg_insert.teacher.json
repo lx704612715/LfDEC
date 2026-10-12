@@ -1,0 +1,32 @@
+{
+  "success": true,
+  "metrics": {
+    "insertion_depth": 0.024151968955993697,
+    "hole_error": 0.00047084666857785,
+    "mouth_error": 0.0005008199709515837,
+    "peg_tilt": 0.0013810680247843266,
+    "finger_gap": 0.00800000037997961
+  },
+  "normal": [
+    -0.0005125260561945785,
+    0.0003287014297858019,
+    0.9999998146361887
+  ],
+  "axis": [
+    0.04102492513146485,
+    -0.00744326169647572,
+    -0.9991303985833258
+  ],
+  "initial_distance_to_hole": 0.30004986074972967,
+  "reference_features": 82,
+  "events": [
+    "MakingContact",
+    "BreakingContact",
+    "Done(insertion_depth->0.024)"
+  ],
+  "samples": {
+    "approach": 31,
+    "search": 44,
+    "insert": 39
+  }
+}

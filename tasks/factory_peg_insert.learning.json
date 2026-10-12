@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "segmentation": "provided EC labels and contact-sample annotations",
+  "frame": "robot base",
+  "manifest_sha256": "98097dba47feb32697481cfbd77aa0c62a28c2a85fe22c1207cddd2a5252b16b",
+  "segments": {
+    "approach": {
+      "state": "free",
+      "source": "factory_peg_insert_approach.npz",
+      "sha256": "3e0e174daae6b58722acb0c152645e170c7521e4fce1ce846c9ea2f445c7283e",
+      "fit_samples": [
+        0,
+        31
+      ],
+      "parameters": {},
+      "diagnostics": {
+        "samples": 31
+      }
+    },
+    "search": {
+      "state": "plane",
+      "source": "factory_peg_insert_search.npz",
+      "sha256": "d7e3187006975d63527d7aae780f7ce84dcf437cf82d24bcf06b0810da71ee17",
+      "fit_samples": [
+        1,
+        8
+      ],
+      "parameters": {
+        "normal": [
+          -0.0005125260561945784,
+          0.0003287014297858018,
+          0.9999998146361886
+        ]
+      },
+      "diagnostics": {
+        "samples": 7,
+        "point": [
+          0.5555662172181266,
+          -0.005339540408125946,
+          0.46500071031706675
+        ],
+        "position_rmse_m": 7.080444788030933e-07
+      }
+    },
+    "insert": {
+      "state": "prismatic",
+      "source": "factory_peg_insert_insert.npz",
+      "sha256": "e173b29e908e5322c05112716abed12fb8ca5e4a437e4430fd919ec391c69b85",
+      "fit_samples": [
+        0,
+        39
+      ],
+      "parameters": {
+        "axis": [
+          0.04102492513146485,
+          -0.00744326169647572,
+          -0.9991303985833258
+        ]
+      },
+      "diagnostics": {
+        "samples": 39,
+        "travel_m": 0.022787893775645576,
+        "position_rmse_m": 0.00017242134257986727
+      }
+    }
+  }
+}

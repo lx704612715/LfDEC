@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "segmentation": "provided EC labels and contact-sample annotations",
+  "frame": "robot base",
+  "manifest_sha256": "e41f418882e1fb1d1d3030fb2bd0065f5b54db38d6a7f0c33bfd4fd171eb35a2",
+  "segments": {
+    "grasp": {
+      "state": "free",
+      "source": "block_grasp.npz",
+      "sha256": "1c6beec2ab40c25a535e6ab155a2322f1655ae63c5f2f1b49f787d60f06e1c5a",
+      "fit_samples": [
+        0,
+        18
+      ],
+      "parameters": {},
+      "diagnostics": {
+        "samples": 18
+      }
+    },
+    "lift": {
+      "state": "free",
+      "source": "block_lift.npz",
+      "sha256": "20dbcad0572ac2b2be5d4cffd0427cae38392130796f21df82bd694415f9a0e9",
+      "fit_samples": [
+        0,
+        18
+      ],
+      "parameters": {},
+      "diagnostics": {
+        "samples": 18
+      }
+    }
+  }
+}

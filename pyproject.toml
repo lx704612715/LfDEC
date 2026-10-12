@@ -1,0 +1,142 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lfdec-primitives"
+version = "0.1.0"
+description = "LfDEC compliant control and motion primitives, layered on Isaac Lab"
+license = "MIT AND BSD-3-Clause"
+license-files = ["LICENSE", "LICENSES/*.txt"]
+# Pinned to Isaac Lab 3.0's interpreter: it is a workspace member, so one interpreter serves both.
+requires-python = ">=3.12,<3.13"
+dependencies = [
+    "numpy",
+    # Pulls in Isaac Lab and every isaaclab-* source package. Declared as a workspace member so
+    # its own [tool.uv.sources] (path = "source/isaaclab", ...) resolve inside the submodule.
+    "isaaclab-dev",
+    "opencv-python-headless>=5.0.0.93",
+    # Already present through Isaac Lab; declared because primitives/graph.py imports it
+    # directly to read a task's EC graph.
+    "pyyaml",
+    # The execution monitor is also rendered into every default recording.
+    "matplotlib>=3.9",
+]
+
+[project.optional-dependencies]
+# Mirror Isaac Lab's backend extras so `uv run --extra ovphysx` works from this project too.
+ovphysx = ["isaaclab-dev[ovphysx]"]
+ov = ["isaaclab-dev[ov]"]
+rsl-rl = ["isaaclab-dev[rsl-rl]"]
+# NOT re-exported: isaaclab-dev[isaacsim]. Full Isaac Sim pins packaging==26 while the whole OV
+# stack (ovphysx/ovrtx/ovstage) needs packaging<24, so the two can never share one lock. We run
+# on ovphysx and newton_mjwarp; if you ever need the isaacsim backend, go through
+# `IL_EXTRA=isaacsim tools/il ...`, which resolves inside the submodule's own project.
+
+# ---------------------------------------------------------------- uv workspace
+# Isaac Lab lives in the repo as a pinned submodule and is resolved as a workspace member, so a
+# bare `uv run` from the repo root gets the full Isaac Lab environment. Everything below this
+# point mirrors external/IsaacLab/pyproject.toml: uv reads resolver settings and indexes from the
+# workspace ROOT only, so they have to be repeated here. Re-sync them when the submodule moves.
+[tool.uv.workspace]
+members = ["external/IsaacLab"]
+
+[tool.uv.sources]
+isaaclab-dev = { workspace = true }
+
+[tool.uv]
+# Isaac Lab's extras are not co-installable: ``isaacsim`` (and the extras that pull it, such as
+# ``teleop``) pin packaging==26, while the OV stack and rl-games need packaging<24. Upstream never
+# has to say so, because it resolves extras as its own root project; as a workspace *member* every
+# extra lands in one resolution universe, so uv needs the incompatibilities declared. Rather than
+# transcribe upstream's whole matrix -- which would drift on every submodule bump -- declare the
+# rule this repo actually follows: **one Isaac Lab extra at a time**.
+#
+# So `uv run --extra ovphysx ...` works and `uv run --extra ovphysx --extra rsl-rl ...` is refused.
+# If you genuinely need a combination, run it inside the submodule's own project instead:
+# `IL_EXTRA=... tools/il ...`, or `uv run --project external/IsaacLab --extra a --extra b`.
+conflicts = [
+    [
+        { package = "isaaclab-dev", extra = "tetrahedralization" },
+        { package = "isaaclab-dev", extra = "video" },
+        { package = "isaaclab-dev", extra = "importers" },
+        { package = "isaaclab-dev", extra = "test" },
+        { package = "isaaclab-dev", extra = "sb3" },
+        { package = "isaaclab-dev", extra = "skrl" },
+        { package = "isaaclab-dev", extra = "rl-games" },
+        { package = "isaaclab-dev", extra = "wandb" },
+        { package = "isaaclab-dev", extra = "rsl-rl" },
+        { package = "isaaclab-dev", extra = "viser" },
+        { package = "isaaclab-dev", extra = "rerun" },
+        { package = "isaaclab-dev", extra = "isaacsim" },
+        { package = "isaaclab-dev", extra = "ov" },
+        { package = "isaaclab-dev", extra = "ovphysx" },
+        { package = "isaaclab-dev", extra = "ovrtx" },
+        { package = "isaaclab-dev", extra = "mimic" },
+        { package = "isaaclab-dev", extra = "teleop" },
+        { package = "isaaclab-dev", extra = "rlinf" },
+        { package = "isaaclab-dev", extra = "leapp" },
+        { package = "isaaclab-dev", extra = "all" },
+    ]
+]
+index-strategy = "unsafe-best-match"
+prerelease = "allow"
+environments = [
+    "sys_platform == 'linux' and platform_machine == 'x86_64'",
+    "sys_platform == 'linux' and platform_machine == 'aarch64'",
+    "sys_platform == 'win32' and platform_machine == 'AMD64'",
+]
+override-dependencies = [
+    "numpy>=2",
+    "mujoco~=3.11.0",
+    "mujoco-warp~=3.11.0",
+    "newton[sim]==1.5.2",
+    "newton-usd-schemas>=0.4.1",
+    "torch==2.11.0",
+    "torchvision==0.26.0",
+    "torchaudio==2.11.0",
+]
+
+[[tool.uv.index]]
+url = "https://pypi.nvidia.com"
+explicit = false
+
+[[tool.uv.index]]
+name = "pypi-public"
+url = "https://pypi.org/simple"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu128"
+url = "https://download.pytorch.org/whl/cu128"
+explicit = true
+
+[[tool.uv.index]]
+name = "pytorch-cu130"
+url = "https://download.pytorch.org/whl/cu130"
+explicit = true
+
+[tool.setuptools.packages.find]
+include = ["lfdec_primitives*"]
+
+[tool.setuptools.package-data]
+lfdec_primitives = ["vis/assets/*.png"]
+
+[tool.isort]
+py_version = 310
+line_length = 120
+group_by_package = true
+skip_glob = ["external/*"]
+sections = ["FUTURE", "STDLIB", "THIRDPARTY", "FIRSTPARTY", "LOCALFOLDER"]
+extra_standard_library = ["numpy", "torch", "matplotlib", "gymnasium", "scipy", "yaml", "tqdm"]
+known_third_party = ["isaacsim.core.api", "omni.replicator.core", "pxr", "omni.kit.*", "warp", "carb"]
+known_first_party = "lfdec_primitives"
+
+[tool.pyright]
+include = ["lfdec_primitives", "scripts"]
+exclude = ["**/__pycache__", "external"]
+typeCheckingMode = "basic"
+pythonVersion = "3.12"
+reportMissingImports = "none"
+reportMissingModuleSource = "none"
+reportGeneralTypeIssues = "none"

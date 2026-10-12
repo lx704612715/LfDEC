@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "segmentation": "provided EC labels and contact-sample annotations",
+  "frame": "robot base",
+  "manifest_sha256": "f0115ba09a658f74746a3d07c09642d4d4dad552378fff3a04c6f9240cff5340",
+  "segments": {
+    "thread": {
+      "state": "screw",
+      "source": "nut_thread.npz",
+      "sha256": "1dd5ce7b1b8457c2cd0a0fb02749ecf15a4b4b41500d92002cd945e4015b2e9a",
+      "fit_samples": [
+        0,
+        73
+      ],
+      "parameters": {
+        "axis": [
+          0.00394112497992553,
+          0.013688996849511416,
+          -0.9998985343019292
+        ],
+        "point": [
+          0.5544219296990776,
+          -0.0071065998354392515,
+          0.4791262773791083
+        ],
+        "pitch": 0.00036788774222692853
+      },
+      "diagnostics": {
+        "samples": 73,
+        "turn_rad": 1.5893697953934192,
+        "position_rmse_m": 9.21399472184097e-05,
+        "rotation_rmse_rad": 0.0002738290064872317
+      }
+    }
+  }
+}

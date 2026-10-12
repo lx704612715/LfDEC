@@ -1,0 +1,37 @@
+# Generated from demonstration segments; see the companion learning report.
+schema_version: 1
+task: LfDEC-Door-EC-Franka
+start: grasp
+primitives:
+  grasp:
+    type: freespace
+    demo: door_approach.npz
+    cfg:
+      max_approach: 0.0
+  open:
+    type: rotation
+    demo: door_turn.npz
+    ec:
+      axis:
+      - -0.001656654535584529
+      - -0.004764356732938907
+      - -0.9999872781194125
+      point:
+      - 0.47832075237827115
+      - 0.36466665423234934
+      - 0.4504238934209327
+      ekf:
+        pitch: 0.0
+    cfg:
+      terminate_extra:
+      - cabinet/door_left_joint
+      - -0.436
+edges:
+- node: grasp
+  successor: open
+  event: NonC
+learning:
+  manifest: door_grasp_open.demo.yaml
+  report: door_grasp_open.learning.json
+execution:
+  max_iters: 200

@@ -1,0 +1,41 @@
+# EC-state labels and contact sample ranges are provided segment annotations.
+schema_version: 1
+task: LfDEC-Peg-Insert-Franka
+start: approach
+segments:
+  approach:
+    state: free
+    demo: insert_approach.npz
+    cfg:
+      max_approach: 0.06
+  search:
+    state: plane
+    demo: insert_slide.npz
+    # Stored-reference mode: PBVS is stable with the supplied Newton/SIFT view.
+    servo:
+      servo_mode: pbvs
+    cfg:
+      press_depth: 0.015
+      spiral_radius: 0.02
+      waypoint_tol: 0.012
+      bce_depth: 0.006
+      mce_force: 10.0
+      servo_max_disp: 0.03
+      servo_time: 6.0
+    fit_samples:
+    - 0
+    - 7
+  insert:
+    state: prismatic
+    demo: insert_descent.npz
+    cfg:
+      delta_p: 0.03
+edges:
+- node: approach
+  successor: search
+  event: MC
+- node: search
+  successor: insert
+  event: BC
+execution:
+  max_iters: 200

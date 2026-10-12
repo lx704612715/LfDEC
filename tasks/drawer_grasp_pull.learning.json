@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "segmentation": "provided EC labels and contact-sample annotations",
+  "frame": "robot base",
+  "manifest_sha256": "e5ff5e1eb0c250cb2656e7d3f000cb5ed06d9b60b27fefa8367ad10511c679bc",
+  "segments": {
+    "grasp": {
+      "state": "free",
+      "source": "drawer_approach.npz",
+      "sha256": "b0675590d6a5beedd2a33dff8fd208525b9c5e712154cb44a20fc14da4eba3b6",
+      "fit_samples": [
+        0,
+        9
+      ],
+      "parameters": {},
+      "diagnostics": {
+        "samples": 9
+      }
+    },
+    "pull": {
+      "state": "prismatic",
+      "source": "drawer_pull.npz",
+      "sha256": "2d97ed075b177333fb8077623fb368ec43f984342e5460c076459da390867046",
+      "fit_samples": [
+        0,
+        13
+      ],
+      "parameters": {
+        "axis": [
+          -0.999984464682529,
+          0.0050925901068005685,
+          -0.0022662567374819604
+        ]
+      },
+      "diagnostics": {
+        "samples": 13,
+        "travel_m": 0.11290273892902442,
+        "position_rmse_m": 6.742708378198138e-05
+      }
+    }
+  }
+}

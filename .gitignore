@@ -1,0 +1,21 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+
+# Local tests and run outputs
+/tests/
+/outputs/
+/logs/
+*.log
+MUJOCO_LOG.TXT
+imgui.ini
+
+# Editor and OS files
+.idea/
+.DS_Store
+*.swp

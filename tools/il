@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# Run a command inside the pinned Isaac Lab uv project at external/IsaacLab.
+#
+#   tools/il python scripts/run_ec_task.py --example drawer_grasp_pull physics=newton_mjwarp
+#   tools/il isaaclab train --rl_library rsl_rl --task Isaac-Cartpole-Direct physics=newton_mjwarp
+#
+# Isaac Lab owns the lockfile and the extras; this repo is layered on with --with-editable, so
+# `import lfdec_primitives` resolves without installing anything into the submodule.
+#
+# IL_EXTRA (default: ovphysx) picks the backend extra. Keep it the same across invocations:
+# `uv run` syncs the venv to exactly the extras requested, so alternating re-downloads ovphysx.
+set -euo pipefail
+REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+exec uv run --project "$REPO/external/IsaacLab" --extra "${IL_EXTRA:-ovphysx}" \
+    --with-editable "$REPO" "$@"

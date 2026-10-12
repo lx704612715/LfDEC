@@ -1,0 +1,78 @@
+# EC-state labels and contact sample ranges are provided segment annotations.
+schema_version: 1
+task: LfDEC-Factory-Peg-Insert-Visual-Franka
+start: approach
+segments:
+  approach:
+    state: free
+    demo: factory_peg_insert_approach.npz
+    cfg:
+      approach_step: 0.001
+      touch_force: 0.3
+      max_approach: 0.04
+      period: 0.2
+      early_exit_disp: 0.003
+      waypoint_tol: 0.0005
+    servo:
+      z_range:
+      - 0.25
+      - 0.5
+      tol: 0.0005
+      rot_tol: 0.003
+      max_time: 30.0
+      error_window: 5
+  search:
+    state: plane
+    demo: factory_peg_insert_search.npz
+    servo:
+      servo_mode: pbvs
+    cfg:
+      press_depth: 0.002
+      contact_force: 0.2
+      bce_depth: 0.001
+      period: 0.2
+      stall_period: 0.2
+      settle: 0.1
+      waypoint_tol: 0.001
+      waypoint_attempts: 2
+      spiral_radius: 0.003
+      spiral_pitch: 0.00075
+      spiral_step: 0.0005
+      min_tran: 2.0e-05
+      mce_attempts: 100
+      mce_force: 3.0
+      early_exit_disp: 0.0002
+      servo_z_range:
+      - 0.09
+      - 0.23
+      servo_max_disp: 0.03
+      servo_time: 4.0
+    fit_samples:
+    - 1
+    - 8
+  insert:
+    state: prismatic
+    demo: factory_peg_insert_insert.npz
+    cfg:
+      delta_p: 0.002
+      period: 0.2
+      min_tran: 2.0e-05
+      early_exit_disp: 0.0005
+      terminate_extra:
+      - insertion_depth
+      - 0.024
+    estimator:
+      init_std: 0.001
+      pred_std: 0.0001
+edges:
+- node: approach
+  successor: search
+  event: MC
+- node: search
+  successor: insert
+  event: BC
+execution:
+  max_iters: 250
+  hand_dy: 0.006
+  hand_dz: 0.006
+  hand_dyaw_deg: -3.0
