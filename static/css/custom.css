@@ -1,0 +1,131 @@
+/* ------------------------------------------------------------------
+   Page-specific additions on top of the Academic Project Page Template.
+   index.css (the template) is left untouched; everything below only adds.
+   Primitive colors mirror the paper's figures.
+   ------------------------------------------------------------------ */
+:root {
+  --ec-free: #c4362d;
+  --ec-plane: #db7327;
+  --ec-trans: #1e9c7e;
+  --ec-rot: #2b6bd0;
+  --ec-corr: #7a4db5;
+}
+
+/* header */
+.publication-authors sup { font-size: 0.7em; }
+.affil-block { font-size: 1rem; color: var(--text-secondary); font-weight: 500; line-height: 1.6; }
+.publication-venue { margin-top: 0.75rem; font-size: 0.95rem; }
+.publication-banner { margin: 0 0 1.5rem; }
+.publication-banner img { width: 100%; display: block; }
+.teaser .subtitle { font-size: 1.1rem; color: var(--text-secondary); line-height: 1.6; max-width: 60rem; margin: 0 auto; }
+
+/* figures */
+.figure-block { margin: 2rem 0; }
+.figure-block img { display: block; width: 100%; background: #fff; border-radius: var(--border-radius); box-shadow: var(--shadow-md); border: 1px solid var(--border-color); padding: 0.75rem; }
+.figure-block .subtitle { font-size: 0.95rem !important; color: var(--text-secondary); margin-top: 0.85rem; line-height: 1.55; }
+
+/* key numbers under the abstract */
+.key-numbers { margin-top: 1.5rem; }
+.key-numbers .heading { color: var(--text-secondary); font-size: 0.75rem; letter-spacing: 0.06em; }
+.key-numbers .title { font-size: 2.2rem; font-weight: 800; color: var(--text-primary); }
+
+/* method stage columns */
+.stage-columns, .prim-columns { margin-top: 1.5rem; }
+.stage-columns .column, .prim-columns .column { background: var(--background-primary); border: 1px solid var(--border-color); border-radius: var(--border-radius); padding: 1.25rem 1.25rem 1.1rem; margin: 0.375rem; }
+.stage-num { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--text-light); margin-bottom: 0.25rem; }
+.stage-columns .title.is-5, .prim-columns .title.is-5 { margin-bottom: 0.6rem !important; }
+.stage-columns p, .prim-columns p { font-size: 0.95rem; line-height: 1.55; color: var(--text-secondary); }
+.prim-columns p em { color: var(--text-primary); font-style: italic; }
+
+/* EC primitive colors */
+.ec-free { color: var(--ec-free) !important; }
+.ec-plane { color: var(--ec-plane) !important; }
+.ec-trans { color: var(--ec-trans) !important; }
+.ec-rot { color: var(--ec-rot) !important; }
+.ec-corr { color: var(--ec-corr) !important; }
+.ec-square { display: inline-block; width: 0.8em; height: 0.8em; border: 2.5px solid currentColor; border-radius: 3px; margin-right: 0.45em; vertical-align: -0.05em; }
+.seq-legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.4rem 1.25rem; margin-top: 1rem; font-size: 0.9rem; color: var(--text-secondary); font-weight: 500; }
+.seq-legend span { display: inline-flex; align-items: center; }
+.seq { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem; margin: 0.75rem 0 1rem; }
+.seq .p { width: 1.6rem; height: 1.6rem; border-radius: 5px; border: 2.5px solid currentColor; display: inline-grid; place-items: center; font-size: 0.72rem; font-weight: 700; background: #fff; }
+.seq .p + .p::before { content: ""; position: absolute; }
+.seq .p.free { color: var(--ec-free); } .seq .p.plane { color: var(--ec-plane); } .seq .p.trans { color: var(--ec-trans); } .seq .p.rot { color: var(--ec-rot); } .seq .p.corr { color: var(--ec-corr); }
+.seq .gap { width: 0.6rem; }
+
+/* task cards */
+.task-grid { margin-top: 2rem; }
+.task-card { height: 100%; display: flex; flex-direction: column; border-radius: var(--border-radius-lg); overflow: hidden; border: 1px solid var(--border-color); box-shadow: var(--shadow-md); }
+.task-card .card-image img { width: 100%; height: 220px; object-fit: cover; display: block; }
+.task-card .card-content { flex: 1; }
+.task-card .card-content .title.is-4 { margin-bottom: 0.35rem; }
+.task-card .card-content .subtitle.is-6 { margin-bottom: 1rem; }
+.task-card .content p { font-size: 0.97rem; line-height: 1.6; color: var(--text-secondary); }
+.task-card .tags .tag { font-weight: 600; }
+.task-card .card-footer-item { font-size: 0.9rem; font-weight: 600; color: var(--text-primary); }
+.task-card .card-footer-item .icon { margin-right: 0.35rem; }
+.task-card .card-footer-item:hover { background: var(--background-accent); }
+@media screen and (max-width: 768px) {
+  .task-card .card-footer { flex-wrap: wrap; }
+  .task-card .card-footer-item { flex-basis: 100%; }
+}
+
+/* baseline table */
+.table-container { margin-top: 1.5rem; border: 1px solid var(--border-color); border-radius: var(--border-radius); }
+.baseline-table { font-size: 0.93rem; margin-bottom: 0.75rem !important; }
+.baseline-table th { color: var(--text-secondary); font-size: 0.78rem; letter-spacing: 0.04em; text-transform: uppercase; }
+.baseline-table td { font-variant-numeric: tabular-nums; white-space: nowrap; }
+.table.is-striped tbody tr.ours.is-selected, .baseline-table tr.ours td { background-color: #e3f5ef !important; color: var(--text-primary) !important; }
+
+/* results carousel: white plates for paper figures */
+.results-carousel .item img { background: #fff; }
+
+/* click-to-play video thumbnails */
+.video-grid { margin-top: 1.5rem; }
+.yt { position: relative; display: block; width: 100%; aspect-ratio: 16 / 9; border: 0; padding: 0; margin: 0; background: #000; border-radius: var(--border-radius); overflow: hidden; cursor: pointer; box-shadow: var(--shadow-md); transition: var(--transition); }
+.yt:hover { transform: translateY(-3px); box-shadow: var(--shadow-lg); }
+.yt img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.yt .play { position: absolute; inset: 0; display: grid; place-items: center; color: #fff; background: linear-gradient(to top, rgba(0,0,0,.35), rgba(0,0,0,0) 50%); }
+.yt .play i { font-size: 1.4rem; width: 3.5rem; height: 3.5rem; border-radius: 50%; background: rgba(0,0,0,.55); border: 2px solid #fff; display: grid; place-items: center; padding-left: 0.2rem; }
+.yt iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.yt.playing { cursor: default; transform: none; }
+.vcap { margin-top: 0.7rem; font-size: 0.92rem; line-height: 1.45; color: var(--text-primary); font-weight: 500; }
+.vcap .tag { margin-right: 0.5rem; font-weight: 600; }
+
+/* discussion boxes */
+#discussion .box { height: 100%; }
+#discussion .box p { color: var(--text-secondary); font-size: 0.97rem; line-height: 1.6; }
+#discussion .box .fix { margin-top: 0.9rem; padding-top: 0.9rem; border-top: 1px dashed var(--border-color); }
+#discussion .box .fix strong { color: var(--ec-trans); }
+#discussion ul li { margin-bottom: 0.5rem; }
+
+/* hide template's fade-in for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .hero, .section { animation: none !important; }
+  .button, .yt, .task-card { transition: none !important; }
+}
+
+/* layout fixes found in review */
+/* Keep the related-work menu in the page header on phones instead of covering content. */
+@media screen and (max-width: 768px) {
+  .more-works-container {
+    position: relative;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    display: flex;
+    justify-content: flex-end;
+    margin: 0.75rem 1rem 0;
+  }
+  .more-works-dropdown {
+    top: calc(100% + 0.5rem);
+    right: 0;
+    bottom: auto;
+  }
+}
+/* Bulma's .container has auto side margins, so as a flex child of .hero it sizes to its content;
+   the no-wrap results table would widen it past the viewport on phones. */
+.hero > .container { width: 100%; min-width: 0; }
+/* Bulma pulls a .subtitle up under a .title by -1.25rem; not wanted inside cards. */
+.task-card .card-content .title.is-4 + .subtitle { margin-top: 0 !important; }
+/* Uniform slide height so the carousel does not reserve the tallest figure's height. */
+.results-carousel .item img { height: clamp(200px, 36vw, 460px); object-fit: contain; }

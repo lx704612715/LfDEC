@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="One demonstration, seven real-world contact-rich manipulation tasks, and a policy built from environmental constraints.">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lfdec.github.io/">
+  <meta property="og:title" content="From a Single Demonstration to a General Policy for Contact-Rich Manipulation">
+  <meta property="og:description" content="Environmental constraints let a robot generalize a single demonstration across seven real-world contact-rich manipulation tasks.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="From a Single Demonstration to a General Policy for Contact-Rich Manipulation">
+  <meta name="twitter:description" content="One demonstration, seven real-world contact-rich manipulation tasks.">
+  <meta name="citation_title" content="From a Single Demonstration to a General Policy for Contact-Rich Manipulation">
+  <meta name="citation_author" content="Li, Xing">
+  <meta name="citation_author" content="Brock, Oliver">
+  <meta name="citation_publication_date" content="2026">
+  <meta name="citation_journal_title" content="The International Journal of Robotics Research">
+  <meta name="citation_arxiv_id" content="2605.17601">
+  <meta name="citation_pdf_url" content="https://arxiv.org/pdf/2605.17601">
+  <title>From a Single Demonstration to a General Policy for Contact-Rich Manipulation</title>
+  <link rel="canonical" href="https://lfdec.github.io/">
+  <link rel="icon" href="static/images/favicon.ico">
+  <link rel="apple-touch-icon" href="static/images/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,700%7CNoto+Sans:400,600,700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/page.css?v=20261014-2">
+  <link rel="stylesheet" href="static/css/insights.css?v=6">
+  <script defer src="static/js/page.js?v=4"></script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ScholarlyArticle",
+    "headline": "From a Single Demonstration to a General Policy for Contact-Rich Manipulation",
+    "author": [{"@type": "Person", "name": "Xing Li"}, {"@type": "Person", "name": "Oliver Brock"}],
+    "datePublished": "2026",
+    "url": "https://lfdec.github.io/",
+    "isAccessibleForFree": true
+  }
+  </script>
+</head>
+<body>
+  <main>
+    <header class="page-header wrap">
+      <h1><span class="title-lead">From a Single Demonstration</span> <span class="title-detail">to a General Policy for Contact-Rich Manipulation</span></h1>
+      <p class="authors"><a href="https://www.linkedin.com/in/xing-li-tub/">Xing Li</a> <a href="https://www.tu.berlin/en/robotics/about-rbo/prof-dr-oliver-brock">Oliver Brock</a></p>
+      <div class="institution-logos" aria-label="Institutions">
+        <img class="logo-tu" src="static/images/logos/image2.png" width="662" height="155" alt="Technische Universität Berlin">
+        <img class="logo-rbo" src="static/images/logos/image1.png" width="1144" height="485" alt="RBO — Robotics and Biology Laboratory">
+        <img class="logo-sci" src="static/images/logos/image60.png" width="928" height="452" alt="Science of Intelligence">
+        <img class="logo-rig" src="static/images/logos/image63.png" width="337" height="161" alt="Robotics Institute Germany">
+      </div>
+      <p class="affiliations"><a href="https://www.tu.berlin/en/robotics">Robotics and Biology Laboratory</a> <span aria-hidden="true">/</span> <a href="https://www.scienceofintelligence.de/">Science of Intelligence</a></p>
+      <p class="venue">The International Journal of Robotics Research · 2026</p>
+      <nav class="resource-links" aria-label="Paper resources">
+        <a href="https://arxiv.org/pdf/2605.17601"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3h8l4 4v14H6zM14 3v5h4M9 12h6M9 16h6"/></svg>Paper</a>
+        <a href="https://arxiv.org/abs/2605.17601"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 3 14 18M5 21l6-8m2-2 6-8"/></svg>arXiv</a>
+        <a href="https://github.com/tu-rbo/LfDEC"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m8 6-6 6 6 6m8-12 6 6-6 6m-3-14-2 16"/></svg>Code</a>
+        <a href="#tasks"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="4"/><path d="m10 9 5 3-5 3z"/></svg>Videos</a>
+      </nav>
+    </header>
+
+    <section class="section insights-section" id="insights" aria-labelledby="principle-heading">
+      <div class="wrap reading-width">
+        <article class="insight principle-insight">
+          <h2 id="principle-heading">Generalization requires separating general information from instance-specific details</h2>
+          <p>To achieve generalization, we separate generalizable information from instance-specific details. Learning should focus on the general parts, leaving the details to be resolved through sensory feedback during execution. This separation shifts the burden of handling instance-specific variations from learning to execution, which we believe is a principle for achieving generalization in robot learning.</p>
+
+          <div class="separation-diagram" role="group" aria-label="We learn general task structure and recover instance-specific details during execution.">
+            <div class="separation-part learning-part">
+              <p class="diagram-label">Learning</p>
+              <h3>General task structure</h3>
+              <span class="diagram-note">Shared across task instances</span>
+            </div>
+            <div class="separation-connector" aria-hidden="true"><svg viewBox="0 0 40 24"><path d="M3 12h32m-8-8 8 8-8 8"/></svg></div>
+            <div class="separation-part execution-part">
+              <p class="diagram-label">Execution</p>
+              <h3>Instance-specific details</h3>
+              <span class="diagram-note">Adapted to the current instance</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="insight constraints-insight" aria-labelledby="constraints-heading">
+          <h2 id="constraints-heading">Environmental constraints enable this separation in contact-rich manipulation</h2>
+          <p>We find that environmental constraints (ECs) enable this separation in contact-rich manipulation. An object’s articulation encodes its functionality and imposes constraints during interaction. Objects with the same functionality often share these constraints, while their geometric parameters vary. Learning should capture the shared constraints to transfer across object instances.</p>
+
+          <figure class="insight-figure">
+            <a href="static/images/drawer_demonstration_views.svg" target="_blank" rel="noopener" aria-label="View the full-size Cartesian-space and constraint-space interpretations of the demonstration">
+              <img src="static/images/drawer_demonstration_views.svg" width="7771" height="3227" alt="Two views of a drawer-opening demonstration. On the left, Cartesian trajectories differ between drawers. On the right, both drawers share the same constraints and contact transitions. The drawer photographs in the center connect the two views." loading="lazy">
+            </a>
+            <figcaption><strong>Left:</strong> We view the demonstration as a trajectory in Cartesian space, where the two drawers require different trajectories. <strong>Right:</strong> We view the demonstration as a sequence of constraints and contact transitions shared by both drawers.</figcaption>
+          </figure>
+
+          <p>We leave instance-specific geometric details to compliant execution. Compliance automatically adapts the robot’s motion to the encountered constraints, and the resulting force–motion relationships reveal their underlying geometry. This balances general learning with adaptive execution.</p>
+
+          <div class="example-slider" role="region" aria-roledescription="carousel" aria-label="Examples of compliant execution and online adaptation">
+            <script type="application/json" class="slider-data">[{"title": "Policy execution and online adaptation", "src": "static/videos/extension-15.mp4", "poster": "static/images/thumbs/extension-15.jpg"}, {"title": "Adaptation to modeling errors", "src": "static/videos/extension-8.mp4", "poster": "static/images/thumbs/extension-8.jpg"}]</script>
+            <article class="video-card example-slide" id="execution-example" role="group" aria-roledescription="slide" aria-label="Example 1 of 2">
+              <div class="video-slot"><video controls playsinline preload="none" poster="static/images/thumbs/extension-15.jpg" aria-label="policy execution and online adaptation video"><source src="static/videos/extension-15.mp4" type="video/mp4">Your browser does not support embedded video. <a href="static/videos/extension-15.mp4">Download the video.</a></video></div>
+            </article>
+            <div class="example-controls" role="group" aria-label="Select an example">
+              <button type="button" class="example-arrow" data-example-step="-1" aria-label="Previous example" aria-controls="execution-example"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button>
+              <p class="example-counter" aria-live="polite" aria-atomic="true">Example 1 of 2</p>
+              <button type="button" class="example-arrow" data-example-step="1" aria-label="Next example" aria-controls="execution-example"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section section-muted experiments-section" id="tasks" aria-labelledby="tasks-heading">
+      <div class="wrap reading-width">
+      <div class="section-heading">
+        <h2 id="tasks-heading">Generalization in the real world</h2>
+        <p>We demonstrate generalization across seven real-world contact-rich tasks, using a single demonstration for each task.</p>
+      </div>
+      <figure class="task-figure">
+        <img src="static/images/title_objects.jpg" width="2400" height="694" alt="Insertion puzzles, door locks, drawers, coffee machine, latches, Functional Manipulation Benchmark, and FurnitureBench tasks." fetchpriority="high">
+      </figure>
+
+      <div class="example-slider" data-counter-style="task" role="region" aria-roledescription="carousel" aria-label="Real-world experiment videos">
+        <script type="application/json" class="slider-data">[{"title": "Insertion puzzles", "src": "static/videos/extension-2.mp4", "poster": "static/images/thumbs/extension-2.jpg"}, {"title": "Door locks with keys", "src": "static/videos/extension-5.mp4", "poster": "static/images/thumbs/extension-5.jpg"}, {"title": "Coffee machine", "src": "static/videos/extension-7.mp4", "poster": "static/images/thumbs/extension-7.jpg"}, {"title": "Latches", "src": "static/videos/extension-9.mp4", "poster": "static/images/thumbs/extension-9.jpg"}, {"title": "Drawers with handles", "src": "static/videos/extension-10.mp4", "poster": "static/images/thumbs/extension-10.jpg"}, {"title": "Functional Manipulation Benchmark", "src": "static/videos/extension-11.mp4", "poster": "static/images/thumbs/extension-11.jpg"}, {"title": "FurnitureBench", "src": "static/videos/extension-13.mp4", "poster": "static/images/thumbs/extension-13.jpg"}]</script>
+        <article class="video-card example-slide" id="experiment-example" role="group" aria-roledescription="slide" aria-label="Insertion puzzles (1 of 7)">
+          <div class="video-slot"><video controls playsinline preload="none" poster="static/images/thumbs/extension-2.jpg" aria-label="insertion puzzles experiment video"><source src="static/videos/extension-2.mp4" type="video/mp4">Your browser does not support embedded video. <a href="static/videos/extension-2.mp4">Download the video.</a></video></div>
+        </article>
+        <div class="example-controls" role="group" aria-label="Select an experiment">
+          <button type="button" class="example-arrow" data-example-step="-1" aria-label="Previous experiment" aria-controls="experiment-example"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button>
+          <p class="example-counter" aria-live="polite" aria-atomic="true">Insertion puzzles (1 of 7)</p>
+          <button type="button" class="example-arrow" data-example-step="1" aria-label="Next experiment" aria-controls="experiment-example"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button>
+        </div>
+      </div>
+      </div>
+    </section>
+
+    <section class="section wrap code-section" id="code" aria-labelledby="code-heading">
+      <h2 id="code-heading">Try it out!</h2>
+      <p>We implement LfDEC in Isaac Lab / Newton to explore environmental constraints in simulation. After setup, a single command runs examples of grasping, drawer and door opening, peg insertion, and nut turning.</p>
+      <nav class="resource-links simulation-links" aria-label="Simulation resources">
+        <a href="https://github.com/tu-rbo/LfDEC">Code &amp; setup instructions ↗</a>
+      </nav>
+      <div class="video-grid simulation-grid">
+        <article class="video-card">
+          <div class="video-slot"><video controls muted playsinline preload="none" poster="static/images/factory_peg_insert.jpg" aria-label="Factory peg insertion simulation"><source src="static/videos/factory_peg_insert.mp4" type="video/mp4"></video></div>
+          <h4>Factory peg insertion</h4>
+        </article>
+        <article class="video-card">
+          <div class="video-slot"><video controls muted playsinline preload="none" poster="static/images/drawer_opening.jpg" aria-label="Drawer opening simulation"><source src="static/videos/drawer_opening.mp4" type="video/mp4"></video></div>
+          <h4>Drawer opening</h4>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="wrap">
+      <p>© 2026 Xing Li and Oliver Brock</p>
+      <p>Page based on the <a href="https://github.com/eliahuhorwitz/Academic-project-page-template">Academic Project Page Template</a>, adapted from <a href="https://nerfies.github.io/">Nerfies</a>. Website content is licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>.</p>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
