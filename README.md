@@ -4,7 +4,7 @@ Xing Li and Oliver Brock
 
 *The International Journal of Robotics Research, 2026*
 
-[![Project page](https://img.shields.io/badge/Project-Page-2ea44f)](https://lfdec.github.io/) [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b)](https://arxiv.org/abs/2605.17601) [![YouTube playlist](https://img.shields.io/badge/YouTube-Playlist-FF0000?logo=youtube&logoColor=white)](https://www.youtube.com/playlist?list=PLDsDQLkZj4vk)
+[![Project page](https://img.shields.io/badge/Project-Page-2ea44f)](https://tu-rbo.github.io/LfDEC/) [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b)](https://arxiv.org/abs/2605.17601) [![Videos](https://img.shields.io/badge/Videos-Experiments-555)](https://tu-rbo.github.io/LfDEC/#tasks)
 
 This repository implements LfDEC, a framework for learning manipulation behaviors
 from a single demonstration based on environmental constraints (ECs).
@@ -33,7 +33,7 @@ Install [uv](https://docs.astral.sh/uv/getting-started/installation/)
 and `ffmpeg` (`sudo apt install ffmpeg` on Ubuntu).
 
 ```bash
-git clone --recursive https://github.com/lx704612715/LfDEC.git
+git clone --recursive https://github.com/tu-rbo/LfDEC.git
 cd LfDEC
 uv sync
 ```
