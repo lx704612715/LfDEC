@@ -4,7 +4,7 @@ Xing Li and Oliver Brock
 
 *The International Journal of Robotics Research, 2026*
 
-[![Project page](https://img.shields.io/badge/Project-Page-2ea44f)](https://tu-rbo.github.io/LfDEC/) [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b)](https://arxiv.org/abs/2605.17601) [![Videos](https://img.shields.io/badge/Videos-Experiments-555)](https://tu-rbo.github.io/LfDEC/#tasks)
+[![Project page](https://img.shields.io/badge/Project-Page-2ea44f)](https://lfdec.github.io/) [![Paper](https://img.shields.io/badge/Paper-arXiv-b31b1b)](https://arxiv.org/abs/2605.17601) [![Videos](https://img.shields.io/badge/Videos-Experiments-555)](https://lfdec.github.io/#tasks)
 
 This repository implements LfDEC, a framework for learning manipulation behaviors
 from a single demonstration based on environmental constraints (ECs).
